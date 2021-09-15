@@ -1,0 +1,34 @@
+/* navbar */
+.navbar > nav {
+  background-color: #bdbdbd;
+  font-weight: bold;
+}
+.nav-link {
+  font-weight: bold;
+  font-size: medium;
+  transition: all linear 0.4s;
+}
+.nav-link:hover {
+  color: #2d9cdb !important;
+}
+#navbarSupportedContent ul {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* end navbar */
+
+/* home */
+
+/* gpa table */
+#gpa__table tr {
+  margin: 0;
+  padding: 0;
+}
+#gpa__table td {
+  margin: 0;
+  padding: 0;
+}
+/* end gpa table */
+/* end home */

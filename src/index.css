@@ -1,0 +1,17 @@
+:root {
+  /* colors */
+  --background-color: #f2f2f2;
+  --navbar-color: #bdbdbd;
+  --nav-link: #2d9cdb;
+  --level-dropdown-bg: #2d9cdb;
+  --sub-type-bg: #2d9cdb;
+  --download: #2d9cdb;
+  /* font-family */
+  --nav: arial;
+  --notice: "century-gothic";
+  --text: "trebuchet ms";
+}
+
+* {
+  margin: 0;
+}
