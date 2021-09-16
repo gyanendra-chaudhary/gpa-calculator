@@ -1,3 +1,11 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPlus,
+  faBook,
+  faClock,
+  faGraduationCap,
+  faFill,
+} from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 // storing grade value
 const fGrade = [];
@@ -84,29 +92,28 @@ function Table(props) {
     </tr>
   ));
   // for optional subjects
-  // const optionalTr = optSub.map((val) => (
-  //   <tr>
-  //     <td>{val.sub}</td>
-  //     <td>{val.creditHr}</td>
-  //     <td id={val.sub.split(" ").join("") + "grade"}></td>
-  //     <td>
-  //       <input
-  //         type="number"
-  //         min={0}
-  //         max={4}
-  //         onChange={handleGrade}
-  //         id={val.sub}
-  //       />
-  //     </td>
-  //   </tr>
-  // ));
+  const elem = (
+    <tr>
+      <td>
+        <input type="text" />
+      </td>
+      <td>
+        <input type="text" />
+      </td>
+      <td>
+        <input type="text" />
+      </td>
+      <td>
+        <input type="text" />
+      </td>
+    </tr>
+  );
   // add optional subjects
   const addOptionalElement = () => {
-   let obj = {};
-   obj["level"]="see";
-   obj["compSubjects"]=[]
-
+    optSub.push(elem);
+    console.log("element", optSub);
   };
+
   return (
     <div>
       <h6 className="text-white w-100 text-center bg-danger message">
@@ -114,11 +121,23 @@ function Table(props) {
       </h6>
       <table className="table table-striped text-center pt-0" id="gpa__table">
         <thead>
-          <tr>
-            <th scope="col">Subject</th>
-            <th scope="col">Credit Hours</th>
-            <th scope="col">Final Grade</th>
-            <th scope="col">Grade Point</th>
+          <tr className="text-success">
+            <th scope="col">
+              <FontAwesomeIcon icon={faBook} />
+              &nbsp; Subject
+            </th>
+            <th scope="col">
+              <FontAwesomeIcon icon={faClock} />
+              &nbsp; Credit Hours
+            </th>
+            <th scope="col">
+              <FontAwesomeIcon icon={faGraduationCap} />
+              &nbsp; Final Grade
+            </th>
+            <th scope="col">
+              <FontAwesomeIcon icon={faFill} />
+              &nbsp; Grade Point
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -144,11 +163,14 @@ function Table(props) {
                 className="rounded bg-success text-white"
                 onClick={addOptionalElement}
               >
-                ADD
+                <FontAwesomeIcon icon={faPlus} />
+                &nbsp;ADD
               </button>
             </td>
           </tr>
-          {optionalTr}
+          {
+            //hello opt subjects
+          }
         </tbody>
       </table>
     </div>
