@@ -9,7 +9,7 @@ function Navbar() {
     <div className="navbar py-0">
       <>
         <Router>
-          <nav class="navbar navbar-expand-lg navbar-dark navbar-l d-block w-100">
+          <nav class="navbar navbar-expand-lg navbar-dark navbar-lg bg-success d-block w-100">
             <div class="container-fluid">
               <Link class="navbar-brand text-light" to="/">
                 GPA Coverter Nepal
