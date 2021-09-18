@@ -15,7 +15,7 @@ function Level(props) {
         <div className="filter__levels d-flex p-2 justify-content-between">
           <div className="level">
             <div className="dropdown">
-              <label for="level" className="">
+              <label htmlFor="level" className="">
                 Choose a Level:&nbsp;&nbsp;
               </label>
               <select
@@ -28,22 +28,34 @@ function Level(props) {
                 <option className="dropdown-item" value="see">
                   SEE
                 </option>
-                <option className="dropdown-item">+2</option>
-                <option className="dropdown-item">BACHELOR</option>
-                <option className="dropdown-item">MASTER</option>
+                <option className="dropdown-item" value="+2">
+                  +2
+                </option>
+                <option className="dropdown-item" value="bachelors">
+                  BACHELOR
+                </option>
+                <option className="dropdown-item" value="masters">
+                  MASTER
+                </option>
               </select>
             </div>
           </div>
           {selValue === "see" ? (
             ""
-          ) : (
+          ) : selValue === "+2" ? (
+            <Faculty data={data.neb.faculty} />
+          ) : selValue === "bachelors" ? (
             <>
-              <Faculty /> <Course />
+              <Faculty data={data.bachelor.faculty} />
+              <Course />
             </>
+          ) : (
+            ""
           )}
         </div>
       </div>
 
+      {/* {selValue === "see" ? <ResultTable data={data.see} /> : selValue==="+2"?<ResultTable data={data.neb} />:""} */}
       {selValue === "see" ? <ResultTable data={data.see} /> : ""}
     </div>
   );

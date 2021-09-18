@@ -7,7 +7,7 @@ import {
   faClock,
   faGraduationCap,
   faFill,
-  faWindowClose,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 // storing grade value
 const fGrade = [];
@@ -22,9 +22,10 @@ function ResultTable(props) {
   const [creditHr, setCreditHr] = useState(null);
   const [grd, setGrd] = useState(0);
   const [fGradeLength, setFgradeLength] = useState(0);
-  const [resultCheck, setResultCheck] = useState(false);
+  const [resultCheck, setResultCheck] = useState(true);
   // update final grade
   const [finalGrade, setFinalGrade] = useState("");
+  const [toRemove, setToRemove] = useState([]);
 
   // handling grade value and push it to fGrade array.
   const handleGrade = (e) => {
@@ -36,8 +37,7 @@ function ResultTable(props) {
       e.target.value > 4 ||
       e.target.value < 0 ||
       e.target.value === "" ||
-      e.target.value === " " ||
-      e.target.value.length > 1
+      e.target.value === " "
     ) {
       setAlert("please input accurate value");
     } else {
@@ -110,7 +110,6 @@ function ResultTable(props) {
     </tr>
   ));
 
-  // for optional subjects
   // add optional subjects
   const addOptionalElement = (e) => {
     e.preventDefault();
@@ -122,6 +121,46 @@ function ResultTable(props) {
     optSub.push(obj);
     setResultCheck(true);
   };
+
+  // for optional subjects
+  const optionalSubs = optSub.map((val) => (
+    <tr id={val.sub}>
+      <td>{val.sub}</td>
+      <td>{val.creditHr}Hr</td>
+      <td>
+        {val.grd >= 0 && val.grd <= 0.8
+          ? "E"
+          : val.grd >= 0.8 && val.grd <= 1.2
+          ? "D"
+          : val.grd >= 1.2 && val.grd <= 1.6
+          ? "D+"
+          : val.grd >= 1.6 && val.grd <= 2.0
+          ? "C"
+          : val.grd >= 2.0 && val.grd <= 2.4
+          ? "C+"
+          : val.grd >= 2.4 && val.grd <= 2.8
+          ? "B"
+          : val.grd >= 2.8 && val.grd <= 3.2
+          ? "B+"
+          : val.grd >= 3.2 && val.grd <= 3.6
+          ? "A"
+          : val.grd >= 3.6 && val.grd <= 4.0
+          ? "A+"
+          : ""}
+      </td>
+      <td>
+        {val.grd}
+        <span
+          className="text-danger float-end px-3"
+          style={{ cursor: "pointer" }}
+          value={val.sub}
+          onClick={removeOptSub}
+        >
+          <FontAwesomeIcon icon={faTrash} />
+        </span>
+      </td>
+    </tr>
+  ));
 
   const handleInputChange = (e) => {
     if (e.target.name === "subject") {
@@ -143,6 +182,19 @@ function ResultTable(props) {
     }
   };
 
+  // remove optional subjects
+  function removeOptSub(val) {
+    // gettin values
+    let id = val.nativeEvent.path[4].id;
+
+    // find idex of element in opt array
+    let index = optSub.findIndex((ind) => ind.sub === id);
+    console.log(index);
+    // delete element at particular index
+    optSub.splice(index, 1);
+
+    console.log(optSub);
+  }
   return (
     <div className="result__table">
       <table className="table table-striped text-center pt-0" id="gpa__table">
@@ -171,12 +223,12 @@ function ResultTable(props) {
             className="bg-warning text-white p-0 m-0"
             style={{ textAlign: "left" }}
           >
-            <td className="p-0 pb-1 px-2 m-0" colspan={1}>
+            <td className="p-0 pb-1 px-2 m-0" colSpan={1}>
               Compulsary
             </td>
             <td
               className="p-0 py-1 px-2 m-0 text-danger text-center h6"
-              colspan={3}
+              colSpan={3}
             >
               {alert}
             </td>
@@ -187,7 +239,7 @@ function ResultTable(props) {
               <td className="p-1 m-0 px-2" style={{ textAlign: "left" }}>
                 Optional
               </td>
-              <td colspan={3}>
+              <td colSpan={3}>
                 <form
                   onSubmit={addOptionalElement}
                   className="d-flex justify-content-between"
@@ -223,9 +275,11 @@ function ResultTable(props) {
                       required
                     />
                   </div>
-                  <button className="rounded bg-primary text-white">
+                  <button
+                    className="rounded bg-primary text-white border-1"
+                    style={{ height: "30px", width: "30px" }}
+                  >
                     <FontAwesomeIcon icon={faPlus} />
-                    &nbsp;ADD
                   </button>
                 </form>
               </td>
@@ -234,42 +288,7 @@ function ResultTable(props) {
             ""
           )}
 
-          {optSub.map((val) => (
-            <tr>
-              <td>{val.sub}</td>
-              <td>{val.creditHr}Hr</td>
-              <td>
-                {val.grd >= 0 && val.grd <= 0.8
-                  ? "E"
-                  : val.grd >= 0.8 && val.grd <= 1.2
-                  ? "D"
-                  : val.grd >= 1.2 && val.grd <= 1.6
-                  ? "D+"
-                  : val.grd >= 1.6 && val.grd <= 2.0
-                  ? "C"
-                  : val.grd >= 2.0 && val.grd <= 2.4
-                  ? "C+"
-                  : val.grd >= 2.4 && val.grd <= 2.8
-                  ? "B"
-                  : val.grd >= 2.8 && val.grd <= 3.2
-                  ? "B+"
-                  : val.grd >= 3.2 && val.grd <= 3.6
-                  ? "A"
-                  : val.grd >= 3.6 && val.grd <= 4.0
-                  ? "A+"
-                  : ""}
-              </td>
-              <td>
-                {val.grd}
-                <span
-                  className="text-danger float-end"
-                  style={{ cursor: "pointer" }}
-                >
-                  <FontAwesomeIcon icon={faWindowClose} />
-                </span>
-              </td>
-            </tr>
-          ))}
+          {optionalSubs}
         </tbody>
       </table>
       <div className="result__gpa text-center bg-light">

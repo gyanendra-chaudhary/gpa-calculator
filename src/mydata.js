@@ -75,15 +75,25 @@ const data = {
   },
   // neb
   neb: {
-    faculty: ["Science", "Management", "Education"],
-    courses: {
-      science: [],
-    },
+    faculty: ["Science", "Management", "Education", "Others"],
   },
   //bachelor
   bachelor: {
-    faculty: [],
-    courses: {},
+    faculty: [
+      "Engineering",
+      "Science And Technology",
+      "Management",
+      "Medicine",
+      "Education",
+      "Humanities And Social Science",
+      "Forestry",
+      "Agriculture And Animal Science",
+      "Law",
+    ],
+    courses: {
+      Engineering: ["A", "B", "C"],
+      "Science And Technology": ["A", "B", "C"],
+    },
   },
 };
 

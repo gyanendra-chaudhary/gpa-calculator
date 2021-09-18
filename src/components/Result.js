@@ -17,7 +17,7 @@ function Result(props) {
       You Score :&nbsp;
       {isNaN(totalGpa)
         ? "Insert Compulsary Subject First"
-        : parseFloat(totalGpa)}{" "}
+        : Number.parseFloat(totalGpa).toFixed(3)}{" "}
       &nbsp;GPA
     </div>
   );
