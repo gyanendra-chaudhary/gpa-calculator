@@ -30,3 +30,49 @@
 // `;
 // tbody.appendChild(tr);
 // console.log(tr);
+
+<div className="delete__notice p-2 rounded shadow bg-white text-danger border">
+  <p className="text-center">Are you sure want to delete..?</p>
+  <hr />
+  <div>
+    <button
+      className="btn btn-primary"
+      onClick={() => {
+        setDel(true);
+      }}
+    >
+      Okay
+    </button>
+    <button
+      className="btn btn-danger"
+      onClick={() => {
+        setDel(false);
+      }}
+    >
+      Cancel
+    </button>
+  </div>
+</div>;
+
+// <div className="delete__notice p-2 rounded shadow bg-white text-danger border">
+//           <p className="text-center">Are you sure want to delete..?</p>
+//           <hr />
+//           <div>
+//             <button
+//               className="btn btn-primary"
+//               onClick={() => {
+//                 setDel(true);
+//               }}
+//             >
+//               Okay
+//             </button>
+//             <button
+//               className="btn btn-danger"
+//               onClick={() => {
+//                 setDel(false);
+//               }}
+//             >
+//               Cancel
+//             </button>
+//           </div>
+//         </div>

@@ -3,7 +3,6 @@ import Course from "./Course";
 import Faculty from "./Faculty";
 import ResultTable from "./ResultTable";
 import data from "../mydata";
-
 function Level(props) {
   const [selValue, setSelValue] = useState("see");
   function handleChange(e) {

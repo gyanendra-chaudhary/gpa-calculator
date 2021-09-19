@@ -32,3 +32,14 @@
 }
 /* end gpa table */
 /* end home */
+.delete__notice {
+  width: 300px;
+  position: fixed;
+  left: 35%;
+  right: 0px;
+  top: 22rem;
+}
+.delete__notice > div {
+  display: flex;
+  justify-content: space-around;
+}

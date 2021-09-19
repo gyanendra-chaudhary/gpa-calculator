@@ -22,10 +22,13 @@ function ResultTable(props) {
   const [creditHr, setCreditHr] = useState(null);
   const [grd, setGrd] = useState(0);
   const [fGradeLength, setFgradeLength] = useState(0);
-  const [resultCheck, setResultCheck] = useState(true);
   // update final grade
   const [finalGrade, setFinalGrade] = useState("");
   const [toRemove, setToRemove] = useState([]);
+
+  // working on delete functionality
+  const [del, setDel] = useState(false);
+  const [dView, setDview] = useState(false);
 
   // handling grade value and push it to fGrade array.
   const handleGrade = (e) => {
@@ -71,7 +74,6 @@ function ResultTable(props) {
         x = "E";
       } else if (num.key === id && num.value >= 0.8 && num.value <= 1.2) {
         x = "D";
-        console.log("lalalal");
       } else if (num.key === id && num.value >= 1.2 && num.value <= 1.6) {
         x = "D+";
       } else if (num.key === id && num.value >= 1.6 && num.value <= 2.0) {
@@ -115,18 +117,18 @@ function ResultTable(props) {
     e.preventDefault();
     let obj = {};
     obj["sub"] = subject;
-    obj["creditHr"] = creditHr;
+    obj["creditHr"] = "4Hr";
     obj["grd"] = grd;
     setOarr(obj);
     optSub.push(obj);
-    setResultCheck(true);
+    setToRemove(optSub);
   };
 
   // for optional subjects
-  const optionalSubs = optSub.map((val) => (
+  const optionalSubs = toRemove.map((val) => (
     <tr id={val.sub}>
       <td>{val.sub}</td>
-      <td>{val.creditHr}Hr</td>
+      <td>4Hr</td>
       <td>
         {val.grd >= 0 && val.grd <= 0.8
           ? "E"
@@ -150,14 +152,13 @@ function ResultTable(props) {
       </td>
       <td>
         {val.grd}
-        <span
-          className="text-danger float-end px-3"
+        <button
+          className="text-danger float-end px-3 rounded border-1"
           style={{ cursor: "pointer" }}
-          value={val.sub}
-          onClick={removeOptSub}
+          onClick={() => removeOptSub(val.sub)}
         >
           <FontAwesomeIcon icon={faTrash} />
-        </span>
+        </button>
       </td>
     </tr>
   ));
@@ -185,15 +186,19 @@ function ResultTable(props) {
   // remove optional subjects
   function removeOptSub(val) {
     // gettin values
-    let id = val.nativeEvent.path[4].id;
-
-    // find idex of element in opt array
-    let index = optSub.findIndex((ind) => ind.sub === id);
-    console.log(index);
+    let id = val;
+    // find idex of element in opt array ind.sub === id
+    let index = toRemove.findIndex((ind) => ind.sub === id);
     // delete element at particular index
-    optSub.splice(index, 1);
-
-    console.log(optSub);
+    if (index >= 0) {
+      dView ? setDview(false) : setDview(true);
+      setDel(true);
+      if (del) {
+        toRemove.splice(index, 1);
+      }
+    } else {
+      console.log("No records");
+    }
   }
   return (
     <div className="result__table">
@@ -253,7 +258,7 @@ function ResultTable(props) {
                       required
                     />
                   </div>
-                  <div>
+                  {/* <div>
                     <label>Credit Hour</label>
                     <input
                       type="number"
@@ -263,7 +268,7 @@ function ResultTable(props) {
                       max={50}
                       required
                     />
-                  </div>
+                  </div> */}
                   <div>
                     <label>Grade Point</label>
                     <input
@@ -292,8 +297,9 @@ function ResultTable(props) {
         </tbody>
       </table>
       <div className="result__gpa text-center bg-light">
-        {resultCheck ? <Result comp={fGrade} opt={optSub} /> : ""}
+        <Result comp={fGrade} opt={toRemove} />
       </div>
+      {dView ? <></> : ""}
     </div>
   );
 }
