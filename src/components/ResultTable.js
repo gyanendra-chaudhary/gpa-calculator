@@ -105,6 +105,7 @@ function ResultTable(props) {
           type="number"
           min={0}
           max={4}
+          step={0.1}
           onChange={handleGrade}
           id={val.sub}
         />
@@ -258,17 +259,7 @@ function ResultTable(props) {
                       required
                     />
                   </div>
-                  {/* <div>
-                    <label>Credit Hour</label>
-                    <input
-                      type="number"
-                      onChange={handleInputChange}
-                      name="creditHr"
-                      min={0}
-                      max={50}
-                      required
-                    />
-                  </div> */}
+
                   <div>
                     <label>Grade Point</label>
                     <input
@@ -277,6 +268,7 @@ function ResultTable(props) {
                       name="grd"
                       min={0}
                       max={4}
+                      step={0.1}
                       required
                     />
                   </div>
