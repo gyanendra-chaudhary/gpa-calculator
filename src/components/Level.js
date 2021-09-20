@@ -5,6 +5,7 @@ import ResultTable from "./ResultTable";
 import data from "../mydata";
 function Level(props) {
   const [selValue, setSelValue] = useState("see");
+  const [faculty, setFaculty] = useState("engineering");
   function handleChange(e) {
     setSelValue(e.target.value);
   }
@@ -42,10 +43,19 @@ function Level(props) {
           {selValue === "see" ? (
             ""
           ) : selValue === "+2" ? (
-            <Faculty data={data.neb.faculty} />
+            <div className="dropdown">
+              <label htmlFor="faculty">Choose a Faculty:&nbsp;&nbsp;</label>
+              <select className="btn border" name="faculty" id="faculty">
+                <option className="dropdown-item">Science</option>;
+                <option className="dropdown-item">Management</option>;
+                <option className="dropdown-item">Science</option>;
+                <option className="dropdown-item">Education</option>;
+                <option className="dropdown-item">Others</option>;
+              </select>
+            </div>
           ) : selValue === "bachelors" ? (
             <>
-              <Faculty data={data.bachelor.faculty} />
+              <Faculty />
               <Course />
             </>
           ) : (

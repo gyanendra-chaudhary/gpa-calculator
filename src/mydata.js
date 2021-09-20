@@ -75,6 +75,7 @@ const data = {
   },
   // neb
   neb: {
+    level: "+2",
     faculty: ["Science", "Management", "Education", "Others"],
   },
   //bachelor

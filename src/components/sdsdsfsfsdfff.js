@@ -76,3 +76,76 @@
 //             </button>
 //           </div>
 //         </div>
+
+// bachelor course
+
+{
+  /* <div className="dropdown">
+                <label htmlFor="faculty">Choose a Faculty:&nbsp;&nbsp;</label>
+                <select className="btn border" name="faculty" id="faculty">
+                  <option
+                    className="dropdown-item"
+                    onSelect={setFaculty("engineering")}
+                  >
+                    Engineering
+                  </option>
+                  ;
+                  <option
+                    className="dropdown-item"
+                    onSelect={setFaculty("science&tech")}
+                  >
+                    Science and Technology
+                  </option>
+                  ;
+                  <option
+                    className="dropdown-item"
+                    onSelect={setFaculty("management")}
+                  >
+                    Management
+                  </option>
+                  ;
+                  <option
+                    className="dropdown-item"
+                    onSelect={setFaculty("education")}
+                  >
+                    Education
+                  </option>
+                  ;
+                  <option
+                    className="dropdown-item"
+                    onSelect={setFaculty("medicine")}
+                  >
+                    Medicine
+                  </option>
+                  ;
+                  <option
+                    className="dropdown-item"
+                    onSelect={setFaculty("education")}
+                  >
+                    Education
+                  </option>
+                  ;
+                  <option
+                    className="dropdown-item"
+                    onSelect={setFaculty("hum&ss")}
+                  >
+                    Humanities and Social Science
+                  </option>
+                  <option
+                    className="dropdown-item"
+                    onSelect={setFaculty("ag&as")}
+                  >
+                    Ag and Animal Science
+                  </option>
+                  ;
+                  <option
+                    className="dropdown-item"
+                    onSelect={setFaculty("law")}
+                  >
+                    Law
+                  </option>
+                  ; ;
+                </select>
+              </div>
+              <Course faculty={faculty} /> */
+}
