@@ -9,6 +9,9 @@ function Level(props) {
   function handleChange(e) {
     setSelValue(e.target.value);
   }
+  function handleFaculty(e) {
+    setFaculty(e.target.value);
+  }
   return (
     <div>
       <div className="border">
@@ -34,9 +37,9 @@ function Level(props) {
                 <option className="dropdown-item" value="bachelors">
                   BACHELOR
                 </option>
-                <option className="dropdown-item" value="masters">
+                {/* <option className="dropdown-item" value="masters">
                   MASTER
-                </option>
+                </option> */}
               </select>
             </div>
           </div>
@@ -55,8 +58,49 @@ function Level(props) {
             </div>
           ) : selValue === "bachelors" ? (
             <>
-              <Faculty />
-              <Course />
+              <div className="dropdown">
+                <label htmlFor="faculty">Choose a Faculty:&nbsp;&nbsp;</label>
+                <select
+                  className="btn border"
+                  name="faculty"
+                  id="faculty"
+                  onChange={handleFaculty}
+                  value={faculty}
+                >
+                  <option className="dropdown-item" value="engineering">
+                    Engineering
+                  </option>
+                  ;
+                  <option className="dropdown-item" value="scienceTech">
+                    Science and Technology
+                  </option>
+                  ;
+                  <option className="dropdown-item" value="management">
+                    Management
+                  </option>
+                  ;
+                  <option className="dropdown-item" value="education">
+                    Education
+                  </option>
+                  ;
+                  <option className="dropdown-item" value="medicine">
+                    Medicine
+                  </option>
+                  ;
+                  <option className="dropdown-item" value="humSs">
+                    Humanities and Social Science
+                  </option>
+                  <option className="dropdown-item" value="agAs">
+                    Ag and Animal Science
+                  </option>
+                  ;
+                  <option className="dropdown-item" value="law">
+                    Law
+                  </option>
+                  ;
+                </select>
+              </div>
+              <Course faculty={faculty} />
             </>
           ) : (
             ""
