@@ -1,12 +1,18 @@
-import React from "react";
+import React,{useState} from "react";
 
 function Course(props) {
-  console.log(props.faculty);
+  const [course,setCourse]=useState("");
+  function handleCourse(e){
+    console.log(e.target.value);
+    setCourse(e.target.value);
+    
+  }
+  console.log(course)
   return (
     <div>
       <div className="dropdown">
-        <label htmlFor="faculty">Choose a Faculty:&nbsp;&nbsp;</label>
-        <select className="btn border" name="faculty" id="faculty">
+        <label htmlFor="faculty" style={{"fontSize":"1.2rem"}}>Choose a Faculty:&nbsp;&nbsp;</label>
+        <select className="btn border" style={{"fontSize":"1.2rem"}} name="faculty" id="faculty" value={course} onClick={handleCourse}>
           {props.faculty === "engineering" ? (
             <>
               <option className="dropdown-item">Engineering</option>

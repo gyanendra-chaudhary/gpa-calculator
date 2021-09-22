@@ -98,7 +98,7 @@ function ResultTable(props) {
   const compulsaryTr = props.data.subDetails.map((val) => (
     <tr>
       <td>{val.sub}</td>
-      <td>{val.creditHr}</td>
+      {/* <td>{val.creditHr}</td> */}
       <td id={val.sub.split(" ").join("") + "grade"}></td>
       <td>
         <input
@@ -129,7 +129,7 @@ function ResultTable(props) {
   const optionalSubs = toRemove.map((val) => (
     <tr id={val.sub}>
       <td>{val.sub}</td>
-      <td>4Hr</td>
+      {/* <td>4Hr</td> */}
       <td>
         {val.grd >= 0 && val.grd <= 0.8
           ? "E"
@@ -164,6 +164,7 @@ function ResultTable(props) {
     </tr>
   ));
 
+  // handling inputs
   const handleInputChange = (e) => {
     if (e.target.name === "subject") {
       setSubject(e.target.value);
@@ -210,10 +211,10 @@ function ResultTable(props) {
               <FontAwesomeIcon icon={faBook} />
               &nbsp; Subject
             </th>
-            <th scope="col">
+            {/* <th scope="col">
               <FontAwesomeIcon icon={faClock} />
               &nbsp; Credit Hours
-            </th>
+            </th> */}
             <th scope="col">
               <FontAwesomeIcon icon={faGraduationCap} />
               &nbsp; Final Grade
@@ -229,8 +230,8 @@ function ResultTable(props) {
             className="bg-warning text-white p-0 m-0"
             style={{ textAlign: "left" }}
           >
-            <td className="p-0 pb-1 px-2 m-0" colSpan={1}>
-              Compulsary
+            <td className="p-0 pb-1 px-4 m-0" colSpan={1}>
+             <span className="h4 d-block text-center">Compulsary</span>
             </td>
             <td
               className="p-0 py-1 px-2 m-0 text-danger text-center h6"

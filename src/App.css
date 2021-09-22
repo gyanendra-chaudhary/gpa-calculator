@@ -1,6 +1,15 @@
 /* navbar */
+*{
+  font-family: 'Times New Roman', Times, serif;
+}
+body{
+  background-color: #F8EDEB;
+}
+
 .navbar > nav {
-  background-color: #bdbdbd;
+  border-radius: 15px;
+  margin: 10px;
+  background-color: #0096C7 ;
   font-weight: bold;
 }
 .nav-link {
@@ -9,8 +18,9 @@
   transition: all linear 0.4s;
 }
 .nav-link:hover {
-  color: #2d9cdb !important;
+  color: #CAF0F8 !important;
 }
+
 #navbarSupportedContent ul {
   width: 100%;
   display: flex;
@@ -18,7 +28,12 @@
 }
 
 /* end navbar */
+/* dropdown */
 
+table{
+  background-color: #FEFAE0;
+  margin-top: 10px;
+}
 /* home */
 
 /* gpa table */
@@ -29,6 +44,7 @@
 #gpa__table td {
   margin: 0;
   padding: 0;
+  font-size: 18px;
 }
 /* end gpa table */
 /* end home */

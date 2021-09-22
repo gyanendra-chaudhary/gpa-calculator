@@ -3,9 +3,11 @@ import Course from "./Course";
 import Faculty from "./Faculty";
 import ResultTable from "./ResultTable";
 import data from "../mydata";
+import AllResult from "./AllResult";
 function Level(props) {
   const [selValue, setSelValue] = useState("see");
-  const [faculty, setFaculty] = useState("engineering");
+  const [faculty, setFaculty] = useState("");
+
   function handleChange(e) {
     setSelValue(e.target.value);
   }
@@ -18,11 +20,12 @@ function Level(props) {
         <div className="filter__levels d-flex p-2 justify-content-between">
           <div className="level">
             <div className="dropdown">
-              <label htmlFor="level" className="">
+              <label htmlFor="level" className="" style={{"fontSize":"1.2rem"}}>
                 Choose a Level:&nbsp;&nbsp;
               </label>
               <select
                 className="btn border"
+                style={{"fontSize":"1rem"}}
                 name="level"
                 id="level"
                 onChange={handleChange}
@@ -47,21 +50,40 @@ function Level(props) {
             ""
           ) : selValue === "+2" ? (
             <div className="dropdown">
-              <label htmlFor="faculty">Choose a Faculty:&nbsp;&nbsp;</label>
-              <select className="btn border" name="faculty" id="faculty">
-                <option className="dropdown-item">Science</option>;
-                <option className="dropdown-item">Management</option>;
-                <option className="dropdown-item">Science</option>;
-                <option className="dropdown-item">Education</option>;
-                <option className="dropdown-item">Others</option>;
+              <label htmlFor="faculty" style={{"fontSize":"1.2rem"}}>Choose a Faculty:&nbsp;&nbsp;</label>
+              <select
+                className="btn border" style={{"fontSize":"1.2rem"}}
+                name="faculty"
+                id="faculty"
+                onChange={handleFaculty}
+                value={faculty}
+              >
+                <option className="dropdown-item" value="science">
+                  Science
+                </option>
+                ;
+                <option className="dropdown-item" value="management">
+                  Management
+                </option>
+                
+                ;
+                <option className="dropdown-item" value="education">
+                  Education
+                </option>
+                ;
+                <option className="dropdown-item" value="others">
+                  Others
+                </option>
+                ;
               </select>
             </div>
           ) : selValue === "bachelors" ? (
             <>
               <div className="dropdown">
-                <label htmlFor="faculty">Choose a Faculty:&nbsp;&nbsp;</label>
+                <label htmlFor="faculty" style={{"fontSize":"1.2rem"}}  >Choose a Faculty:&nbsp;&nbsp;</label>
                 <select
                   className="btn border"
+                  style={{"fontSize":"1.2rem"}}
                   name="faculty"
                   id="faculty"
                   onChange={handleFaculty}
@@ -108,8 +130,13 @@ function Level(props) {
         </div>
       </div>
 
-      {/* {selValue === "see" ? <ResultTable data={data.see} /> : selValue==="+2"?<ResultTable data={data.neb} />:""} */}
-      {selValue === "see" ? <ResultTable data={data.see} /> : ""}
+      {selValue === "see" ? (
+        <ResultTable data={data.see} />
+      ) : selValue === "+2" ? (
+        <AllResult faculty={faculty} />
+      ) : (
+        selValue === "bachelors" ?<AllResult faculty={faculty} />:""
+      )}
     </div>
   );
 }

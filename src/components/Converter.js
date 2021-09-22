@@ -2,7 +2,7 @@ import React from "react";
 
 function Converter() {
   return (
-    <div>
+    <div className="converter">
       <h1>GPA To Percentage</h1>
     </div>
   );

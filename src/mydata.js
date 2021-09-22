@@ -77,6 +77,18 @@ const data = {
   neb: {
     level: "+2",
     faculty: ["Science", "Management", "Education", "Others"],
+    subDetails: [
+      {
+        faculty:"science",
+        sub: "English",
+        grade:"11"
+      },
+      {
+        faculty:"science",
+        sub: "English",
+        grade:"11"
+      },
+    ],
   },
   //bachelor
   bachelor: {
