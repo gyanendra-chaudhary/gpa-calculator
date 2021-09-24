@@ -5,33 +5,49 @@ function Converter() {
   const [gpa,setGpa]=useState(0);
   const [percentage,setPercentage]=useState(0);
   const [alert,setAlert]=useState("");
-  const [result,setResult]=useState("");
 
 function handleGpa(e){
   var val = e.target.value;
-  if(e.target.value > 4 ||
-    e.target.value < 0 ||
-    e.target.value === " "){
+  if(val > 4 ||
+    val < 0 ||
+    val === " "){
     setAlert("Please Check Your Value.");
   }else{
     setAlert("");
-    setGpa(e.target.value);
+    converter("gpa",val);
   }
-  converter("gpa",val);
+
 }
 
 function handlePercentage(e){
-  if(e.target.value > 4 ||
-    e.target.value < 0 ||
-    e.target.value === " "){
+  var val = e.target.value;
+  if(val > 100 ||
+    val < 0 ||
+    val === " "){
     setAlert("Please Check Your Value.");
   }else{
     setAlert("");
-    setPercentage(e.target.value);
+    converter("percentage",val);
+
   }
 }
 function converter(type,value){
- 
+let x = "";
+if(type==="gpa"){
+  x = parseFloat(value)*25;
+  x = Number.parseFloat(x).toFixed(2);
+  if(x){
+    setAlert(x+" %");
+  }
+}else if(type==="percentage"){
+  x = parseFloat(value)/25;
+  x = Number.parseFloat(x).toFixed(2);
+
+  if(x){
+    setAlert(x+" gpa");
+  }
+}
+//  return x;
 }
   return (
     <div className="converter">
@@ -39,7 +55,7 @@ function converter(type,value){
       <div className="gpa_to_percentage">
         <div className="gpa">
           <label htmlFor="input">Input your GPA</label>
-          <input type="number" min={0} max={4} step={0.1} placeholder={gpa} onChange={handleGpa} />
+          <input type="number" min={0} max={4} step={0.1} placeholder="GPA  " onChange={handleGpa} />
         </div>
         <div className="result text-center">
           <span className="">Result</span>
@@ -48,7 +64,7 @@ function converter(type,value){
         </div>
         <div className="percentage">
           <label htmlFor="input">Input your Percentage</label>
-          <input type="number" min={0} max={4} step={0.1} placeholder={percentage} />
+          <input type="number" min={0} max={100} step={1} placeholder="%" onChange={handlePercentage} />
         </div>
       </div>
     </div>

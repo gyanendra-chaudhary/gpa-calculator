@@ -227,18 +227,14 @@ function ResultTable(props) {
         </thead>
         <tbody id="tbody">
           <tr
-            className="bg-warning text-white p-0 m-0"
+            className=""
             style={{ textAlign: "left" }}
           >
-            <td className="p-0 pb-1 px-4 m-0" colSpan={1}>
-             <span className="h4 d-block text-center">Compulsary</span>
-            </td>
-            <td
-              className="p-0 py-1 px-2 m-0 text-danger text-center h6"
-              colSpan={3}
-            >
-              {alert}
-            </td>
+            <td className="px-4" colSpan={4}>
+             <h4 className="">Compulsary</h4>
+             <h5 className="bg-danger text-center">{alert}</h5>
+             
+            </td>           
           </tr>
           {compulsaryTr}
           {fGradeLength >= 5 ? (

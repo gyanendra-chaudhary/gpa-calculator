@@ -7,8 +7,6 @@ body{
 }
 
 .navbar > nav {
-  border-radius: 15px;
-  margin: 10px;
   background-color: #0096C7 ;
   font-weight: bold;
 }
@@ -16,10 +14,17 @@ body{
   font-weight: bold;
   font-size: medium;
   transition: all linear 0.4s;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white !important;
+  margin: 10px;
+  text-align: center;
 }
 .nav-link:hover {
-  color: #CAF0F8 !important;
+ background-color: #F8EDEB;
+ color: black !important;
 }
+
 
 #navbarSupportedContent ul {
   width: 100%;
