@@ -11,7 +11,19 @@
   --notice: "century-gothic";
   --text: "trebuchet ms";
 }
+/* configure tailwind css */
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* end configuring tailwind css */
 
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+/* end google fonts */
 * {
   margin: 0;
+  font-family: 'PT Sans', sans-serif;
 }
+
+
