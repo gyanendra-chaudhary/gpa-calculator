@@ -5,12 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // side navbar
 import SideNav from './SideNav'
 
-function Nav() {
+function Nav({getTemplate}) {
   const [sidebar,setSidebar]=useState(false);
   const handleSidebar = () =>{
     setSidebar(!sidebar);
     console.log("clicked....",sidebar);
-
   }
     return (
         <div className=" nav p-2 bg-gray-50 shadow-sm grid grid-cols-3 fixed left-0 right-0">
@@ -24,7 +23,7 @@ function Nav() {
 
           {/* sidenavbar */}
           <div className="side-nav">
-            {sidebar?<SideNav />:""}
+            {sidebar?<SideNav getTemplate={getTemplate} />:""}
           </div>
           {/* end sidenavbar */}
         </div>
